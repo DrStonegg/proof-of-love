@@ -1,0 +1,1289 @@
+/* ============================================================
+   OUR LITTLE WORLD
+   Mobile-first / iPhone 16 design
+============================================================ */
+
+:root {
+
+    --background: #0b090a;
+
+    --background-soft: #120e10;
+
+    --text: #f5efeb;
+
+    --text-soft: #d7ccc6;
+
+    --muted: #9f918b;
+
+    --accent: #d6a39a;
+
+    --line: rgba(255,255,255,0.12);
+
+}
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    font-weight: 300;
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+
+}
+
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(214,163,154,.09),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(255,255,255,.035),
+            transparent 35%
+        );
+
+}
+
+
+img {
+
+    max-width: 100%;
+
+}
+
+
+button,
+a {
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+
+.serif {
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+}
+
+
+h1,
+h2,
+p {
+
+    margin: 0;
+
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero {
+
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+
+        max(30px, env(safe-area-inset-top))
+
+        24px
+
+        max(30px, env(safe-area-inset-bottom));
+
+    overflow: hidden;
+
+}
+
+
+.hero-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("assets/story/image.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    transform: scale(1.04);
+
+    filter:
+        brightness(.42)
+        saturate(.8);
+
+    animation: heroZoom 12s ease-out forwards;
+
+}
+
+
+@keyframes heroZoom {
+
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1);
+    }
+
+}
+
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.25) 35%,
+            rgba(11,9,10,.92) 100%
+        );
+
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 700px;
+
+    text-align: center;
+
+}
+
+
+.eyebrow {
+
+    margin-bottom: 28px;
+
+    color: #ddd0ca;
+
+    font-size: 10px;
+
+    letter-spacing: .28em;
+
+    text-transform: uppercase;
+
+}
+
+
+.hero h1 {
+
+    font-size: clamp(70px, 20vw, 145px);
+
+    line-height: .76;
+
+    font-weight: 400;
+
+    letter-spacing: -.055em;
+
+}
+
+
+.hero-subtitle {
+
+    max-width: 330px;
+
+    margin: 34px auto 0;
+
+    color: #d6cbc6;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+.begin-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 48px;
+
+    padding: 13px 20px;
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    border-radius: 100px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: .13em;
+
+    text-transform: uppercase;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
+
+}
+
+
+.begin-button span {
+
+    font-size: 15px;
+
+}
+
+
+.begin-button:active {
+
+    transform: scale(.97);
+
+}
+
+
+.begin-button:hover {
+
+    background: rgba(255,255,255,.08);
+
+}
+
+
+/* ============================================================
+   GENERAL SECTIONS
+============================================================ */
+
+.story-section,
+.moments-section,
+.letter-section,
+.our-gallery {
+
+    width: 100%;
+
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+}
+
+
+.story-section {
+
+    padding:
+        110px
+        24px
+        100px;
+
+}
+
+
+.section-number {
+
+    color: var(--accent);
+
+    font-size: 10px;
+
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+
+}
+
+
+.divider {
+
+    width: calc(100% - 48px);
+
+    max-width: 1050px;
+
+    height: 1px;
+
+    margin: 0 auto;
+
+    background: var(--line);
+
+}
+
+
+/* ============================================================
+   STORY
+============================================================ */
+
+.story-grid {
+
+    display: grid;
+
+    gap: 50px;
+
+}
+
+
+.story-heading h2 {
+
+    margin-top: 20px;
+
+    font-size: clamp(55px, 16vw, 90px);
+
+    line-height: .86;
+
+    letter-spacing: -.045em;
+
+}
+
+
+.story-text {
+
+    color: var(--text-soft);
+
+    font-size: 16px;
+
+}
+
+
+.story-text p + p {
+
+    margin-top: 24px;
+
+}
+
+
+.story-text em {
+
+    color: #eee5df;
+
+}
+
+
+.dropcap:first-letter {
+
+    float: left;
+
+    padding:
+
+        8px
+
+        9px
+
+        0
+
+        0;
+
+    color: var(--accent);
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 4.4em;
+
+    line-height: .7;
+
+}
+
+
+/* ============================================================
+   LITTLE MOMENTS
+============================================================ */
+
+.moments-section {
+
+    padding:
+        100px
+        24px
+        80px;
+
+}
+
+
+.moments-title {
+
+    margin-top: 20px;
+
+    font-size: clamp(55px, 16vw, 90px);
+
+    line-height: .86;
+
+    letter-spacing: -.045em;
+
+}
+
+
+/* JavaScript-generated story gallery */
+
+.story-gallery {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 7px;
+
+    margin-top: 55px;
+
+}
+
+
+.story-photo {
+
+    position: relative;
+
+    overflow: hidden;
+
+    margin: 0;
+
+    background: #161214;
+
+}
+
+
+.story-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+
+/* Large alternating images */
+
+.story-photo:nth-child(1) {
+
+    grid-column: span 2;
+
+    aspect-ratio: 4 / 5;
+
+}
+
+
+.story-photo:nth-child(2),
+.story-photo:nth-child(3) {
+
+    aspect-ratio: 3 / 4;
+
+}
+
+
+.story-photo:nth-child(4) {
+
+    grid-column: span 2;
+
+    aspect-ratio: 4 / 5;
+
+}
+
+
+.story-photo:nth-child(n+5) {
+
+    aspect-ratio: 3 / 4;
+
+}
+
+
+/* ============================================================
+   QUOTE
+============================================================ */
+
+.quote-section {
+
+    min-height: 80svh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 24px;
+
+    text-align: center;
+
+}
+
+
+.quote-number {
+
+    margin-bottom: 35px;
+
+    color: var(--accent);
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+}
+
+
+.quote-section p {
+
+    max-width: 900px;
+
+    font-size: clamp(42px, 11vw, 78px);
+
+    line-height: .98;
+
+    letter-spacing: -.035em;
+
+}
+
+
+.quote-label {
+
+    margin-top: 35px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+    text-transform: uppercase;
+
+}
+
+
+/* ============================================================
+   LETTER
+============================================================ */
+
+.letter-section {
+
+    min-height: 90svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        120px 24px
+        140px;
+
+    text-align: center;
+
+}
+
+
+.letter {
+
+    max-width: 720px;
+
+    margin: auto;
+
+}
+
+
+.letter h2 {
+
+    margin-top: 18px;
+
+    margin-bottom: 55px;
+
+    text-align: center;
+
+    font-size: clamp(70px, 18vw, 110px);
+
+    line-height: .8;
+
+    letter-spacing: -.05em;
+
+}
+
+
+.letter-text {
+
+    max-width: 950px;
+
+    margin: 0 auto;
+
+    color: var(--text-soft);
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: clamp(30px, 4vw, 52px);
+
+    line-height: 1.18;
+
+    text-align: center;
+
+}
+
+
+.letter-text p {
+
+    margin-bottom: 26px;
+
+}
+
+
+.signature {
+
+    margin-top: 45px;
+
+    color: var(--accent);
+
+    font-size: 38px;
+
+}
+
+
+/* ============================================================
+   OUR GALLERY
+============================================================ */
+
+.our-gallery {
+
+    padding:
+        110px
+        24px
+        110px;
+
+}
+
+
+.gallery-title {
+
+    margin-top: 20px;
+
+    font-size: clamp(58px, 17vw, 95px);
+
+    line-height: .84;
+
+    letter-spacing: -.05em;
+
+}
+
+
+.gallery-description {
+
+    max-width: 360px;
+
+    margin-top: 28px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* ============================================================
+   GALLERY GRID
+============================================================ */
+
+.memory-gallery {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 6px;
+
+    margin-top: 50px;
+
+}
+
+
+.memory-photo {
+
+    appearance: none;
+
+    display: block;
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 0;
+
+    border: 0;
+
+    overflow: hidden;
+
+    background: #161214;
+
+    cursor: pointer;
+
+}
+
+
+.memory-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+
+}
+
+
+.memory-photo:active img {
+
+    transform: scale(.97);
+
+}
+
+
+.memory-photo:nth-child(4n + 1) {
+
+    grid-column: span 2;
+
+    aspect-ratio: 4 / 5;
+
+}
+
+
+.memory-photo:nth-child(4n + 2),
+.memory-photo:nth-child(4n + 3) {
+
+    aspect-ratio: 3 / 4;
+
+}
+
+
+.memory-photo:nth-child(4n) {
+
+    grid-column: span 2;
+
+    aspect-ratio: 4 / 5;
+
+}
+
+
+/* ============================================================
+   LIGHTBOX
+============================================================ */
+
+.gallery-lightbox {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(6,5,6,.97);
+
+    padding:
+
+        max(65px, calc(env(safe-area-inset-top) + 40px))
+
+        48px
+
+        max(55px, calc(env(safe-area-inset-bottom) + 30px));
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
+    touch-action: pan-y;
+
+}
+
+
+.gallery-lightbox.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+.lightbox-content {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    text-align: center;
+
+}
+
+
+.lightbox-content img {
+
+    max-width: 100%;
+
+    max-height: 78svh;
+
+    width: auto;
+
+    height: auto;
+
+    object-fit: contain;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    border-radius: 2px;
+
+}
+
+
+.photo-counter {
+
+    margin-top: 16px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+}
+
+
+/* ============================================================
+   LIGHTBOX CLOSE
+============================================================ */
+
+.lightbox-close {
+
+    position: absolute;
+
+    top:
+        max(
+            16px,
+            calc(env(safe-area-inset-top) + 8px)
+        );
+
+    right: 18px;
+
+    width: 44px;
+
+    height: 44px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.05);
+
+    color: white;
+
+    font-size: 27px;
+
+    font-weight: 300;
+
+    cursor: pointer;
+
+}
+
+
+/* ============================================================
+   LIGHTBOX ARROWS
+============================================================ */
+
+.lightbox-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 44px;
+
+    height: 60px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 0;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.7);
+
+    font-family: Georgia, serif;
+
+    font-size: 45px;
+
+    font-weight: 300;
+
+    cursor: pointer;
+
+}
+
+
+.lightbox-prev {
+
+    left: 5px;
+
+}
+
+
+.lightbox-next {
+
+    right: 5px;
+
+}
+
+
+/* ============================================================
+   ENDING
+============================================================ */
+
+.ending {
+
+    min-height: 80svh;
+
+    display: grid;
+
+    place-items: center;
+
+    padding:
+        100px
+        24px;
+
+    text-align: center;
+
+}
+
+
+.ending-inner {
+
+    max-width: 800px;
+
+}
+
+
+.ending h2 {
+
+    margin-top: 20px;
+
+    font-size: clamp(62px, 17vw, 115px);
+
+    line-height: .83;
+
+    letter-spacing: -.05em;
+
+}
+
+
+.ending p {
+
+    margin-top: 30px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+}
+
+
+.heart {
+
+    margin-top: 45px;
+
+    color: var(--accent);
+
+    font-size: 28px;
+
+    animation: heartbeat 2.2s ease-in-out infinite;
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+}
+
+
+/* ============================================================
+   REVEAL ANIMATION
+============================================================ */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+
+}
+
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* ============================================================
+   DESKTOP
+============================================================ */
+
+@media (min-width: 801px) {
+
+    .story-section {
+
+        padding-top: 150px;
+
+        padding-bottom: 140px;
+
+    }
+
+
+    .story-grid {
+
+        grid-template-columns: 1fr 1.15fr;
+
+        gap: 100px;
+
+    }
+
+
+    .story-text {
+
+        font-size: 18px;
+
+    }
+
+
+    .moments-section {
+
+        padding-top: 130px;
+
+    }
+
+
+    .story-gallery {
+
+        grid-template-columns:
+            repeat(12, 1fr);
+
+    }
+
+
+    .story-photo:nth-child(1) {
+
+        grid-column: span 7;
+
+        grid-row: span 2;
+
+        aspect-ratio: auto;
+
+        height: 650px;
+
+    }
+
+
+    .story-photo:nth-child(2) {
+
+        grid-column: span 5;
+
+        aspect-ratio: 3 / 4;
+
+    }
+
+
+    .story-photo:nth-child(3) {
+
+        grid-column: span 5;
+
+        aspect-ratio: 3 / 4;
+
+    }
+
+
+    .story-photo:nth-child(4) {
+
+        grid-column: span 7;
+
+        aspect-ratio: auto;
+
+        height: 500px;
+
+    }
+
+
+    .story-photo:nth-child(n+5) {
+
+        grid-column: span 4;
+
+        aspect-ratio: 3 / 4;
+
+    }
+
+
+    .memory-gallery {
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+    }
+
+
+    .memory-photo:nth-child(4n + 1),
+    .memory-photo:nth-child(4n) {
+
+        grid-column: span 2;
+
+    }
+
+
+    .lightbox-prev {
+
+        left: 30px;
+
+    }
+
+
+    .lightbox-next {
+
+        right: 30px;
+
+    }
+
+}
+
+
+/* ============================================================
+   REDUCE MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+
+    }
+
+}
