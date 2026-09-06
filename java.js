@@ -14,7 +14,6 @@
 
 const storyPhotos = [
     "photo_1_2026-09-06_22-13-17.jpg",
-    "image.png",
     "photo_2_2026-09-06_22-13-17.jpg",
     "photo_3_2026-09-06_22-13-17.jpg",
     "photo_4_2026-09-06_22-13-17.jpg",
@@ -24,7 +23,6 @@ const storyPhotos = [
     "photo_8_2026-09-06_22-13-17.jpg",
     "photo_9_2026-09-06_22-13-17.jpg",
     "photo_10_2026-09-06_22-13-17.jpg"
-
 ];
 
 
